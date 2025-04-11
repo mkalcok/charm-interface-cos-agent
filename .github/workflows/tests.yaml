@@ -1,0 +1,33 @@
+name: charm-interface-cos-agent
+
+on:
+  push:
+      branches:
+        - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install tox -yq
+
+      - name: Lint
+        run: tox -e pep8
+
+      - name: Unit tests
+        run: tox -e py3

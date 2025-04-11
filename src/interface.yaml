@@ -1,0 +1,17 @@
+name: cos_agent
+summary: |
+    This interface allows reactive charms to integrate with operator charms
+    that require `cos_agent` interface, e.g. grafana-agent.
+maintainer: OpenStack Charmers <openstack-charmers@lists.ubuntu.com>
+repo: https://opendev.org/openstack-charmers/charm-interface-cos-agent.git
+ignore:
+  - 'unit_tests'
+  - '.stestr.conf'
+  - 'test-requirements.txt'
+  - 'tox.ini'
+  - '.gitignore'
+  - '.zuul.yaml'
+  - '.flake8'
+  - 'LICENSE'
+  - 'README.md'
+  - 'requirements.txt'
